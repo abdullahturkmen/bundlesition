@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Roboto, 'Open Sans', sans-serif;
         }
 
         body {
@@ -21,7 +22,6 @@
 
         .page {
             position: relative;
-            text-align: center;
             background-color: #6ab0ff;
             background-image: url(./img/bg.png);
             background-position: center;
@@ -57,7 +57,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
         }
 
         .close-btn {
@@ -116,7 +116,7 @@
 
         .slogan-container {
             background-color: #014CFC;
-            padding: 10px;
+            padding: 20px;
             border-radius: 16px;
             position: relative;
             margin-bottom: 10px;
@@ -137,6 +137,47 @@
         .slogan-container.star-right::before {
             right: -6% !important;
             left: auto;
+        }
+
+        .slogan-container .slogan-text {
+            color: #fff;
+            margin: 1em 0 2em;
+            display: block;
+            font-size: 17px;
+        }
+
+        .slogan-container .slogan-button {
+            background-color: #FFC40C;
+            border-radius: 100px;
+            color: #024DFC;
+            font-weight: bold;
+            padding: 8px 50px 8px 20px;
+            cursor: pointer;
+            border: 2px solid #014CFC;
+            font-size: 15px;
+            position: relative;
+        }
+
+        .slogan-container .slogan-button:active {
+            background-color: #ffffff;
+        }
+
+        .slogan-container .slogan-button::after {
+            content: '';
+            position: absolute;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTQiIGhlaWdodD0iMzgiIHZpZXdCb3g9IjAgMCA1NCAzOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUyLjQ4MDMgMjAuODY1MkM1My40Njc4IDE5Ljg3NzcgNTMuNDY3OCAxOC4yNzY2IDUyLjQ4MDMgMTcuMjg5MUwzNi4zODc5IDEuMTk2NjhDMzUuNDAwNCAwLjIwOTE2OSAzMy43OTkzIDAuMjA5MTY5IDMyLjgxMTggMS4xOTY2OEMzMS44MjQzIDIuMTg0MTkgMzEuODI0MyAzLjc4NTI2IDMyLjgxMTggNC43NzI3N0w0Ny4xMTYyIDE5LjA3NzFMMzIuODExOCAzMy4zODE1QzMxLjgyNDMgMzQuMzY5IDMxLjgyNDMgMzUuOTcwMSAzMi44MTE4IDM2Ljk1NzZDMzMuNzk5MyAzNy45NDUxIDM1LjQwMDQgMzcuOTQ1MSAzNi4zODc5IDM2Ljk1NzZMNTIuNDgwMyAyMC44NjUyWk0wLjExODY1MiAyMS42MDU4TDUwLjY5MjMgMjEuNjA1OFYxNi41NDg1TDAuMTE4NjUyIDE2LjU0ODVMMC4xMTg2NTIgMjEuNjA1OFoiIGZpbGw9IiMwMjRERkMiLz4KPC9zdmc+Cg==');
+            width: 16px;
+            display: block;
+            right: 12px;
+            top: 0;
+            height: 100%;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .slogan-container.bottom-radius {
+            border-radius: 16px 16px 240px 240px !important;
         }
 
         .cover-image {
@@ -163,12 +204,10 @@
         .cover-image .img {
             width: 100%;
             height: auto;
-
             filter: drop-shadow(0 0 8px #ffbb31);
             position: relative;
             z-index: 1;
         }
-
 
         .action-btn {
             padding: 10px 20px;
@@ -181,7 +220,6 @@
             font-weight: 700;
             text-transform: uppercase;
             width: 100%;
-            font-family: Roboto, 'Open Sans', sans-serif;
             z-index: 9;
             position: relative;
         }
@@ -190,6 +228,20 @@
             color: #014CFC;
             background-color: #fff;
             border: 2px solid #014CFC;
+        }
+
+        .slogan-img {
+            width: calc(100% + 72px);
+            position: relative;
+            margin: 20px -36px -60px;
+        }
+
+        .slogan-img .img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 8px #ffbb31);
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
