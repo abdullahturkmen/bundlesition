@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkcell</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .page {
+            position: relative;
+            text-align: center;
+            background-color: #6ab0ff;
+            background-image: url(./img/bg.png);
+            background-position: center;
+            background-size: cover;
+            padding: 60px 20px 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+
+        .page:before {
+            position: absolute;
+            content: "";
+            background-image: url(./img/abstract.png);
+            width: 100%;
+            height: 100%;
+            top: 20%;
+            left: 0;
+            background-position: center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+
+        .container {
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #80a8ccc9;
+            border: 2px solid #ffffff;
+            font-size: 2em;
+            cursor: pointer;
+            width: 42px;
+            height: 42px;
+            color: #ffffff;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: .9;
+            z-index: 9;
+        }
+
+        .logo {
+            margin-bottom: 10px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo::before,
+        .logo::after {
+            width: 18%;
+            height: 100%;
+            content: "";
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTc1IiBoZWlnaHQ9IjU1IiB2aWV3Qm94PSIwIDAgMTc1IDU1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMzFfNzI2KSI+CjxwYXRoIGQ9Ik0xLjkyOTQ0IDIuODM1OTRDMTYuMTcyMSAyLjgzNTk0IDE2LjE3MjEgMjMuMDQyIDMwLjQzNDEgMjMuMDQyQzQ0LjY5NiAyMy4wNDIgNDQuNjc2NyAyLjgzNTk0IDU4LjkxOTQgMi44MzU5NEM3My4xNjIxIDIuODM1OTQgNzMuMTYyMSAyMy4wNDIgODcuNDI0MSAyMy4wNDJDMTAxLjY4NiAyMy4wNDIgMTAxLjY2NyAyLjgzNTk0IDExNS45MDkgMi44MzU5NEMxMzAuMTUyIDIuODM1OTQgMTMwLjE1MiAyMy4wNDIgMTQ0LjQxNCAyMy4wNDJDMTU4LjY3NiAyMy4wNDIgMTU4LjY1NyAyLjgzNTk0IDE3Mi45MTkgMi44MzU5NCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIzLjg1OTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMS45Mjk0NCAzMS45NTgzQzE2LjE3MjEgMzEuOTU4MyAxNi4xNzIxIDUyLjE2NDMgMzAuNDM0MSA1Mi4xNjQzQzQ0LjY5NjEgNTIuMTY0MyA0NC42NzY4IDMxLjk1ODMgNTguOTM4NyAzMS45NTgzQzczLjIwMDcgMzEuOTU4MyA3My4xODE0IDUyLjE2NDMgODcuNDQzNCA1Mi4xNjQzQzEwMS43MDUgNTIuMTY0MyAxMDEuNjg2IDMxLjk1ODMgMTE1Ljk0OCAzMS45NTgzQzEzMC4yMSAzMS45NTgzIDEzMC4xOTEgNTIuMTY0MyAxNDQuNDUzIDUyLjE2NDNDMTU4LjcxNSA1Mi4xNjQzIDE1OC42OTUgMzEuOTU4MyAxNzIuOTU3IDMxLjk1ODMiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMy44NTk4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8zMV83MjYiPgo8cmVjdCB3aWR0aD0iMTc0Ljg0OSIgaGVpZ2h0PSI1My4xODgxIiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwLjkwNjAwNikiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K');
+            display: block;
+            top: 0;
+            position: absolute;
+            background-position: center;
+            background-size: cover;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        .logo::before {
+            left: 0;
+        }
+
+        .logo::after {
+            right: 0;
+        }
+
+        .logo .logo-img {
+            width: 60%;
+        }
+
+        .slogan-container {
+            background-color: #014CFC;
+            padding: 10px;
+            border-radius: 16px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .slogan-container::before {
+            content: '';
+            position: absolute;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYyIiBoZWlnaHQ9IjI1NiIgdmlld0JveD0iMCAwIDI2MiAyNTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8zMV80NzcpIj4KPGVsbGlwc2UgY3g9IjExMC43NjIiIGN5PSI1MC40OTU4IiByeD0iMi40NDcwNyIgcnk9IjIuNDQyNzgiIHRyYW5zZm9ybT0icm90YXRlKC0xNSAxMTAuNzYyIDUwLjQ5NTgpIiBmaWxsPSJ3aGl0ZSIvPgo8ZWxsaXBzZSBjeD0iMTE0LjY2MiIgY3k9IjY1LjA1NDEiIHJ4PSIyLjQ0NzA3IiByeT0iMi40NDI3OCIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1IDExNC42NjIgNjUuMDU0MSkiIGZpbGw9IndoaXRlIi8+CjxlbGxpcHNlIGN4PSIxMTguNTYzIiBjeT0iNzkuNjEyNSIgcng9IjIuNDQ3MDciIHJ5PSIyLjQ0Mjc4IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTUgMTE4LjU2MyA3OS42MTI1KSIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjIwNC4xOTgiIGN5PSIxOTUuMDc3IiByeD0iMi40NDcwNyIgcnk9IjIuNDQyNzgiIHRyYW5zZm9ybT0icm90YXRlKC0xNSAyMDQuMTk4IDE5NS4wNzcpIiBmaWxsPSJ3aGl0ZSIvPgo8ZWxsaXBzZSBjeD0iMTkzLjk5MSIgY3k9IjE4Ni4xMDMiIHJ4PSIyLjQ0NzA3IiByeT0iMi40NDI3OCIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1IDE5My45OTEgMTg2LjEwMykiIGZpbGw9IndoaXRlIi8+CjxlbGxpcHNlIGN4PSIxODEuOTQ1IiBjeT0iMTc3LjY0NiIgcng9IjIuNDQ3MDciIHJ5PSIyLjQ0Mjc4IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTUgMTgxLjk0NSAxNzcuNjQ2KSIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjIxMC42ODYiIGN5PSI4OC4wNTc2IiByeD0iMi40NDcwNyIgcnk9IjIuNDQyNzgiIHRyYW5zZm9ybT0icm90YXRlKC0xNSAyMTAuNjg2IDg4LjA1NzYpIiBmaWxsPSJ3aGl0ZSIvPgo8ZWxsaXBzZSBjeD0iNTYuMjgwMSIgY3k9IjEzMS4zNzgiIHJ4PSIyLjQ0NzA3IiByeT0iMi40NDI3OCIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1IDU2LjI4MDEgMTMxLjM3OCkiIGZpbGw9IndoaXRlIi8+CjxlbGxpcHNlIGN4PSI3MC4wMTc3IiBjeT0iMTMxLjU5MiIgcng9IjIuNDQ3MDciIHJ5PSIyLjQ0Mjc4IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTUgNzAuMDE3NyAxMzEuNTkyKSIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjE4NS4yOTEiIGN5PSIxMDIuNjc3IiByeD0iMi40NDcwNyIgcnk9IjIuNDQyNzgiIHRyYW5zZm9ybT0icm90YXRlKC0xNSAxODUuMjkxIDEwMi42NzcpIiBmaWxsPSJ3aGl0ZSIvPgo8ZWxsaXBzZSBjeD0iMTk4Ljg5NiIgY3k9Ijk1LjExMTUiIHJ4PSIyLjQ0NzA3IiByeT0iMi40NDI3OCIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1IDE5OC44OTYgOTUuMTExNSkiIGZpbGw9IndoaXRlIi8+CjxlbGxpcHNlIGN4PSI5OC41MTc0IiBjeT0iMjIzLjM5NCIgcng9IjIuNDQ3MDciIHJ5PSIyLjQ0Mjc4IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTUgOTguNTE3NCAyMjMuMzk0KSIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjEwMi44NyIgY3k9IjIxMC41MTgiIHJ4PSIyLjQ0NzA3IiByeT0iMi40NDI3OCIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1IDEwMi44NyAyMTAuNTE4KSIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjEwOS4wNDkiIGN5PSIxOTcuMTc5IiByeD0iMi40NDcwNyIgcnk9IjIuNDQyNzgiIHRyYW5zZm9ybT0icm90YXRlKC0xNSAxMDkuMDQ5IDE5Ny4xNzkpIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTc0LjQ0OCA4Ni40MTI3TDIxMy45NyA3NC43ODZDMjIzLjE5NiA3Mi4wNjEgMjMwLjIzMiA4My4wOTg2IDIyMy44MjggOTAuMzAyNUwxOTYuNTA5IDEyMS4wOTFDMTg2LjY4NCAxMzIuMTcxIDE4NS42NTcgMTQ4LjQ3OSAxOTQuMDE4IDE2MC42NzlMMjE3LjI3MSAxOTQuNjA4QzIyMi43MTMgMjAyLjUzMyAyMTQuMzQ0IDIxMi42MTUgMjA1LjUzOSAyMDguNzc4TDE2Ny43NzYgMTkyLjM2OEMxNTQuMjEzIDE4Ni40NjggMTM4LjMzMiAxOTAuNTQ3IDEyOS4zMTMgMjAyLjI3TDEwNC4xNzIgMjM0Ljg1MkM5OC4zMDc4IDI0Mi40NjggODYuMTAzNSAyMzcuNjcgODcuMDMyNCAyMjguMDlMOTEuMDE0MSAxODcuMTY2QzkyLjQ0MDQgMTcyLjQ0NSA4My42NzkzIDE1OC42NTggNjkuNzMzMiAxNTMuNjk1TDMwLjkyODIgMTM5LjkxNkMyMS44NTk5IDEzNi43MDYgMjIuNjkwMSAxMjMuNjM3IDMyLjA4NjkgMTIxLjU0OUw3Mi4zMTIgMTEyLjY0MkM4Ni43ODMxIDEwOS40NDcgOTcuMjEyMSA5Ni44NDA0IDk3LjYzNDMgODIuMDU5NEw5OC44MDU3IDQwLjk1MzRDOTkuMDY5NSAzMS4zNDg2IDExMS43NyAyOC4wNzE4IDExNi42NDkgMzYuMzQ5NUwxMzcuNTE2IDcxLjc3NzZDMTQ1LjAwOCA4NC41MTQxIDE2MC4yNDcgOTAuNTIxMyAxNzQuNDUzIDg2LjMzNTZMMTc0LjQ0OCA4Ni40MTI3WiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI3LjM0ODEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE2MS45MjIgMTI4LjE1OUMxNjYuMzcyIDE0NC43NyAxNTYuNDg2IDE2MS44NTkgMTM5Ljg0NSAxNjYuMzE4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjcuMzQ4MTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTAxLjY3MSAxNDQuMzAzQzk3LjIxOTcgMTI3LjY5MiAxMDcuMTA2IDExMC42MDIgMTIzLjc0NyAxMDYuMTQzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjcuMzQ4MTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzMxXzQ3NyI+CjxyZWN0IHdpZHRoPSIyMTUiIGhlaWdodD0iMjA2IiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC40NjQ4NDQgNTYuNDc5OSkgcm90YXRlKC0xNSkiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K');
+            width: 20%;
+            aspect-ratio: 1;
+            background-position: center;
+            background-size: cover;
+            top: 0;
+            left: -6%;
+        }
+
+        .slogan-container.star-right::before {
+            right: -6% !important;
+            left: auto;
+        }
+
+        .cover-image {
+            width: 100%;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .cover-image:after {
+            width: 40%;
+            aspect-ratio: 1;
+            content: '';
+            position: absolute;
+            z-index: 1;
+            background-image: url(./img/logo-circle.png);
+            background-position: center;
+            background-size: cover;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        .cover-image .img {
+            width: 100%;
+            height: auto;
+
+            filter: drop-shadow(0 0 8px #ffbb31);
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .action-btn {
+            padding: 10px 20px;
+            background-color: #014CFC;
+            color: #fff;
+            border: 2px solid #014CFC;
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: 100%;
+            font-family: Roboto, 'Open Sans', sans-serif;
+            z-index: 9;
+            position: relative;
+        }
+
+        .action-btn:active {
+            color: #014CFC;
+            background-color: #fff;
+            border: 2px solid #014CFC;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="container">
+            <button class="close-btn">&times;</button>
+            <div class="logo">
+
+                <img src="./img/logo.png" class="logo-img" width="100%" />
+            </div>
+            <div class="slogan-container star-right">
+                Bodrum
+
+            </div>
+         
+        </div>
+    </div>
+</body>
+
+</html>
