@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turkcell</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -143,7 +145,8 @@
             color: #fff;
             margin: 1em 0 2em;
             display: block;
-            font-size: 17px;
+            font-size: 16px;
+            font-family: "Montserrat", sans-serif;
         }
 
         .slogan-container .slogan-button {
@@ -156,6 +159,7 @@
             border: 2px solid #014CFC;
             font-size: 15px;
             position: relative;
+            font-family: "Montserrat", sans-serif;
         }
 
         .slogan-container .slogan-button:active {
@@ -250,7 +254,7 @@
 <body>
     <div class="page">
         <div class="container">
-            <button class="close-btn">&times;</button>
+            <button class="close-btn" id="close-button" data-onesignal-unique-label="close_button">&times;</button>
             <div class="logo">
                 <img src="./img/logo.png" class="logo-img" width="100%" />
             </div>
@@ -269,7 +273,7 @@
                     kaçırma!
                 </div>
 
-                <button class="slogan-button">Keşfet</button>
+                <button id="discover-button" class="slogan-button" data-onesignal-unique-label="open-url-button">Keşfet</button>
 
                 <div class="slogan-img">
                     <img src="./img/bodrum.png" alt="Bodrum" class="img">
@@ -277,6 +281,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelector("#discover-button").addEventListener("click", function (e) {
+            try {
+                OneSignalIamApi.openUrl(e, TARGET_URL);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                // aslinda bir etkisi yok ama browser testinde mantikli davranmasi icin
+                window.open(TARGET_URL, "_blank");
+            }
+        });
+    </script>
 </body>
 
 </html>
